@@ -985,8 +985,8 @@ html{font-synthesis:none}
 .gk-b{background:transparent;box-shadow:inset 0 0 0 1px #fff}
 .gk-b span{color:#fff}
 .gk-word,.gk-def{color:#fff}
-.cens{background:#fff}
-html:not(.rm) .cens::after{background:#fff}
+.cens{background:none;color:#fff}
+html:not(.rm) .cens::after{background:#000;box-shadow:inset 0 0 0 1.5px #fff}
 .neq-p{color:#fff}
 .neq-t{background:rgba(59,99,240,var(--eq,0));color:#fff}
 .neq-t::before{border-color:#fff}
@@ -995,6 +995,15 @@ html:not(.rm) .cens::after{background:#fff}
 .say.gh .k{color:#fff}
 .say.gh .ln::after{-webkit-text-stroke-color:#fff}
 .node{background:#000}
+/* ===== v11 ===== */
+.tools{display:none!important}
+.rdr{grid-template-columns:minmax(0,1fr)}
+.src-list.open{max-height:min(46vh,30em);overflow:auto;overscroll-behavior:contain}
+.src-list li.src-h{flex-basis:100%;margin-top:10px;color:var(--heat-hi);letter-spacing:.1em;text-transform:uppercase}
+.src-list a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.outline,.ink .outline,.lyr-ln.o,.neq-k{color:#fff!important;-webkit-text-stroke:0!important}
+.say.gh .ln::after{display:none!important}
+.wall div{color:rgba(255,255,255,.14)!important;-webkit-text-stroke:0!important}
 /* ---------- tools: brief, notes, phone, motion ---------- */
 .tools{position:fixed;z-index:60;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);right:calc(env(safe-area-inset-right,0px) + 12px);display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
 .tools button{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--bone);border:1px solid var(--ink-3);padding:9px 11px;min-height:36px;transition:border-color var(--t-fast)}
@@ -1398,10 +1407,10 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
   <section id="s-readers" class="sec ink readers tex" data-ch="4">
     <div class="stage" style="--h:300vh" data-scrub="sticky" data-fn="readers">
       <div class="stick" id="rdrs">
-        <div class="rdr"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2"><rect x="20" y="4" width="20" height="38" rx="3"/><rect x="24" y="42" width="12" height="12"/></svg><p>Один находит флешку.</p></div>
-        <div class="rdr"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="48" x2="6" y2="30"/><line x1="14" y1="48" x2="14" y2="16"/><line x1="22" y1="48" x2="22" y2="24"/><line x1="30" y1="48" x2="30" y2="8"/><line x1="38" y1="48" x2="38" y2="28"/><line x1="46" y1="48" x2="46" y2="18"/><line x1="54" y1="48" x2="54" y2="34"/></svg><p>Другой умеет работать со спектрограммой.</p></div>
-        <div class="rdr"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2"><circle cx="30" cy="30" r="22"/><line x1="30" y1="8" x2="30" y2="52"/><line x1="11" y1="19" x2="49" y2="41"/><line x1="11" y1="41" x2="49" y2="19"/></svg><p>Третий замечает повторяющийся знак.</p></div>
-        <div class="rdr"><svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="30" x2="56" y2="30"/><line x1="10" y1="22" x2="10" y2="38"/><line x1="24" y1="24" x2="24" y2="36"/><line x1="36" y1="20" x2="36" y2="40"/><line x1="50" y1="24" x2="50" y2="36"/></svg><p>Четвёртый собирает хронологию и объясняет остальным, почему две находки связаны.</p></div>
+        <div class="rdr"><p>Один находит флешку.</p></div>
+        <div class="rdr"><p>Другой умеет работать со спектрограммой.</p></div>
+        <div class="rdr"><p>Третий замечает повторяющийся знак.</p></div>
+        <div class="rdr"><p>Четвёртый собирает хронологию и объясняет остальным, почему две находки связаны.</p></div>
       </div>
     </div>
   </section>
@@ -1459,9 +1468,9 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
 
 <footer class="foot" id="foot">
   <div class="foot-in">
-    <div class="credits mono"><button class="src-btn" type="button" id="srcBtn" aria-expanded="false" aria-controls="srcList">[ Источники ]</button><ul class="src-list" id="srcList"><li>Генри Дженкинс — Transmedia Storytelling 101, март 2007</li><li>Официальное описание Year Zero — Nine Inch Nails</li><li>iamtryingtobelieve.com · exterminal.net · Another Version of the Truth — 2007</li><li>[ добавить источники ]</li></ul><span>[ Текст: автор ]</span><span>[ Дизайн и разработка ]</span><a href="#s-open">[ Наверх ↑ ]</a></div>
+    <div class="credits mono"><button class="src-btn" type="button" id="srcBtn" aria-expanded="false" aria-controls="srcList">[ Источники ]</button><ul class="src-list" id="srcList"><li class="src-h">Текст и факты</li><li><a href="https://henryjenkins.org/blog/2007/03/transmedia_storytelling_101.html" target="_blank" rel="noopener">Генри Дженкинс — Transmedia Storytelling 101, март 2007</a></li><li>Nine Inch Nails — Year Zero (Interscope, 2007), официальное описание альбома</li><li><a href="https://en.wikipedia.org/wiki/Year_Zero_(game)" target="_blank" rel="noopener">Year Zero (game) — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Campaign_timeline_of_Year_Zero" target="_blank" rel="noopener">Campaign timeline of Year Zero — Wikipedia</a></li><li><a href="https://www.nin.wiki/Year_Zero" target="_blank" rel="noopener">Year Zero — NIN Wiki</a></li><li><a href="https://en.wikipedia.org/wiki/42_Entertainment" target="_blank" rel="noopener">42 Entertainment — Wikipedia</a></li><li><a href="https://www.britannica.com/art/Gesamtkunstwerk" target="_blank" rel="noopener">Gesamtkunstwerk — Britannica</a></li><li><a href="https://web.archive.org/web/2007/http://www.iamtryingtobelieve.com/" target="_blank" rel="noopener">iamtryingtobelieve.com — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.exterminal.net/" target="_blank" rel="noopener">exterminal.net — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.anotherversionofthetruth.com/" target="_blank" rel="noopener">anotherversionofthetruth.com — Wayback Machine</a></li><li class="src-h">Референсы оформления</li><li><a href="https://linkinparkband.tilda.ws" target="_blank" rel="noopener">linkinparkband.tilda.ws</a></li><li><a href="https://abbaband.tilda.ws" target="_blank" rel="noopener">abbaband.tilda.ws</a></li><li><a href="https://punkrock.tilda.ws/en" target="_blank" rel="noopener">punkrock.tilda.ws</a></li><li><a href="https://fightclub-vg.tilda.ws/eng" target="_blank" rel="noopener">fightclub-vg.tilda.ws</a></li><li><a href="https://after-life.ru/1" target="_blank" rel="noopener">after-life.ru</a></li><li><a href="https://war.artmilitonian.com" target="_blank" rel="noopener">war.artmilitonian.com</a></li><li class="src-h">Шрифты</li><li><a href="https://fonts.google.com/specimen/Tektur" target="_blank" rel="noopener">Tektur — Google Fonts</a></li><li><a href="https://fonts.adobe.com/fonts/tonos-mono-variable" target="_blank" rel="noopener">Tonos Mono Variable — Adobe Fonts</a></li><li><a href="https://fonts.google.com/specimen/IBM+Plex+Mono" target="_blank" rel="noopener">IBM Plex Mono — Google Fonts</a></li></ul><span>[ Текст: автор ]</span><span>[ Дизайн и разработка ]</span><a href="#s-open">[ Наверх ↑ ]</a></div>
     <p class="src mute">«Оригинал YZ» — материалы Year Zero (2007). «Схема» и «реконструкция» — сделано для этого лонгрида.</p>
-    <div class="tools" role="toolbar" aria-label="Режимы просмотра">
+    <div class="tools" role="toolbar" aria-label="Режимы просмотра" hidden>
   <button class="pri" id="tBrief" type="button">Brief</button>
   <button id="tNotes" type="button" aria-pressed="false">Notes</button>
   <button id="tPhone" type="button" aria-pressed="false">Mobile 390</button>
@@ -2185,7 +2194,7 @@ function fnSay(p,el){const sy=$('.say',el);if(!sy)return;const m=sy.dataset.mode
 function fnNeq(p,el){const n=$('#neq',el);if(!n)return;wordsIn($('.neq-p',n),p,.04,.36);n.style.setProperty('--bx',(RM?1:clamp((p-.4)/.12)).toFixed(3));n.style.setProperty('--eq',(RM?1:easeOut(clamp((p-.54)/.14))).toFixed(3));n.style.setProperty('--sx',(RM?1:clamp((p-.72)/.12)).toFixed(3));}
 $$('.neq-p').forEach(splitDeep);
 function layoutCrowd(){$$('canvas.crowd').forEach(c=>{const r=c.getBoundingClientRect();const w=Math.max(300,Math.round(r.width)),h=Math.max(200,Math.round(r.height));c.width=w;c.height=h;const x=c.getContext('2d');x.clearRect(0,0,w,h);x.fillStyle='#000';x.strokeStyle='#fff';x.lineWidth=1.5;const R=rand(404);const k=w/1440;
-  for(let row=0;row<5;row++){const base=h*(.2+row*.15);const sc=(.75+row*.25)*Math.max(.55,k)*2.1;let px=-40;while(px<w+40){const hr=(13+R()*9)*sc;const cx=px+hr,cy=base+R()*hr*.7;x.beginPath();x.arc(cx,cy,hr,0,Math.PI*2);x.fill();x.stroke();const sw=hr*3.5;x.beginPath();if(x.roundRect)x.roundRect(cx-sw/2,cy+hr*1.05,sw,h,hr*1.5);else x.rect(cx-sw/2,cy+hr*1.05,sw,h);x.fill();x.stroke();px+=hr*(1.5+R()*1.7);}}});}
+  for(let row=0;row<5;row++){const base=h*(.2+row*.15);const sc=(.75+row*.25)*Math.max(.55,k)*2.1;let px=-40;while(px<w+40){const hr=(13+R()*9)*sc;const cx=px+hr,cy=base+R()*hr*.7;x.beginPath();x.arc(cx,cy,hr,0,Math.PI*2);x.fill();if(row===0)x.stroke();const sw=hr*3.5;x.beginPath();if(x.roundRect)x.roundRect(cx-sw/2,cy+hr*1.05,sw,h,hr*1.5);else x.rect(cx-sw/2,cy+hr*1.05,sw,h);x.fill();if(row===0)x.stroke();px+=hr*(1.5+R()*1.7);}}});}
 function buildTiles(){const t=$('#tiles'),f=$('#field');if(!t||!f)return;t.innerHTML='';const W=f.offsetWidth,H=f.offsetHeight;t.style.cssText=`left:${f.offsetLeft}px;top:${f.offsetTop}px;width:${W}px;height:${H}px`;
   for(let i=-2;i<=2;i++)for(let j=-2;j<=2;j++){if(!i&&!j)continue;const c=f.cloneNode(true);c.removeAttribute('id');c.querySelectorAll('[id]').forEach(e=>e.removeAttribute('id'));c.querySelectorAll('line').forEach(l=>l.style.strokeDashoffset='0');c.classList.add('tile');c.style.transform='';c.dataset.i=i;c.dataset.j=j;t.appendChild(c);}buildMesh();}
 let MESH=[];
@@ -2211,7 +2220,7 @@ let waveAmp=null;
 function layoutWave(){const cv=$('#wave');if(!cv)return;const r=cv.getBoundingClientRect();cv.width=Math.max(300,Math.round(r.width));cv.height=Math.max(100,Math.round(r.height));const n=Math.ceil(cv.width/4)+1;const R=rand(77);let v=.5;waveAmp=[];for(let i=0;i<n;i++){v=clamp(v+(R()-.5)*.32,.06,1);waveAmp.push(clamp(v*.75+Math.abs(Math.sin(i*.19))*.3*R(),.03,1));}}
 function drawWave(head){const cv=$('#wave');if(!cv||!waveAmp)return;const x=cv.getContext('2d'),w=cv.width,h=cv.height;const hx=head*w;x.clearRect(0,0,w,h);
   x.fillStyle='rgba(255,255,255,.3)';x.fillRect(0,Math.round(h/2),w,1);
-  for(let i=0;i<waveAmp.length;i++){const px=i*4;if(px>hx)break;const a=Math.max(1,waveAmp[i]*h*.46);x.fillStyle=px>hx-70?'#3b63f0':'#0a0b0d';x.fillRect(px,h/2-a,2,a*2);}
+  for(let i=0;i<waveAmp.length;i++){const px=i*4;if(px>hx)break;const a=Math.max(1,waveAmp[i]*h*.46);x.fillStyle=px>hx-70?'#3b63f0':'#fff';x.fillRect(px,h/2-a,2,a*2);}
   x.fillStyle='#3b63f0';x.fillRect(Math.min(w-2,hx),0,2,h);const sec=head*6.4;$('#waveT').textContent='0'+Math.floor(sec)+':'+String(Math.floor((sec%1)*60)).padStart(2,'0');}
 /* horizontal stages (pages, lyrics) */
 function layoutHz(){$$('.stage[data-hz]').forEach(st=>{const tr=$('.hz-track',st);if(!tr)return;if(RM){st.style.height='';return;}const ex=Math.max(0,tr.scrollWidth-tr.parentElement.clientWidth);st.style.height=Math.round(innerHeight*1.3+ex)+'px';});}
@@ -2283,7 +2292,7 @@ $('#tBrief').addEventListener('click',()=>{brief.hidden=false;brief.scrollTop=0;
 $('#briefClose').addEventListener('click',()=>{brief.hidden=true;$('#tBrief').focus();});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&!brief.hidden){brief.hidden=true;}});
 if(location.hash==='#brief')brief.hidden=false;
-if(location.hash==='#notes'||store.get('yz-notes')==='1'){root.classList.add('notes-on');$('#tNotes').setAttribute('aria-pressed','true');}
+if(location.hash==='#notes'){root.classList.add('notes-on');$('#tNotes').setAttribute('aria-pressed','true');}
 if(location.hash==='#mobile'){root.classList.add('phone');$('#tPhone').setAttribute('aria-pressed','true');}
 if(RM)$('#tRM').setAttribute('aria-pressed','true');
 
