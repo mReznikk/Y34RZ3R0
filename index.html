@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tektur:wdth,wght@75..100,400..900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
+/* base reset the artifact viewer adds on its own; repeated here so the page works anywhere (GitHub Pages) */
+[hidden]{display:none!important}
+body{margin:0}
+img{max-width:100%}
 /* v10 type: headings in Heading Now 74 Regular (Zetafonts), everything else in Tonos Mono Variable.
    Neither is on Google Fonts: they load from an installed copy, or from embedded files once added below (src: url(data:font/woff2;base64,…)). */
 @font-face{font-family:"YZ Heading";src:local("Heading Now 74 Regular"),local("HeadingNow-74Regular"),local("Heading Now 74"),local("HeadingNow74-Regular"),local("Heading Now Trial 74 Regular"),local("HeadingNowTrial-74Regular");font-weight:1 1000;font-style:normal;font-display:swap}
