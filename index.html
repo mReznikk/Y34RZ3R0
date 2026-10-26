@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Year Zero · Проявка</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1039,6 +1044,9 @@ html.notes-on #notes{transform:none}
 .rhythm span{flex:var(--w) 0 auto;min-width:46px;height:64px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px;border:1px solid var(--ink)}
 .rhythm .k{background:var(--ink);color:var(--bone)} .rhythm .b{background:var(--bone)} .rhythm .x{background:var(--heat);color:var(--bone);border-color:var(--heat)}
 </style>
+</head>
+<body>
+
 
 <div id="intro" role="dialog" aria-modal="true" aria-labelledby="bmTitle" tabindex="-1" hidden>
   <div class="bm">
@@ -1060,7 +1068,13 @@ html.notes-on #notes{transform:none}
     
   </div>
 </div>
-<script>document.getElementById('intro').hidden=false;document.documentElement.classList.add('intro-on');</script>
+<script>document.getElementById('intro').hidden=false;document.documentElement.classList.add('intro-on');
+/* safety net: script errors are printed into the Bureau log, and the screen always lets go of the page */
+(function(){function rep(m){try{var l=document.getElementById('bmLog');if(!l)return;var li=document.createElement('li');li.className='cur';li.textContent='ERROR · '+String(m).slice(0,180);l.appendChild(li);}catch(e){}}
+window.addEventListener('error',function(e){rep((e.message||'script error')+(e.lineno?' · line '+e.lineno:''));});
+window.addEventListener('unhandledrejection',function(e){var r=e.reason;rep(r&&r.message?r.message:r);});
+function free(){var i=document.getElementById('intro');if(!i||i.hidden)return;i.hidden=true;document.documentElement.classList.remove('intro-on');var s=document.getElementById('story');if(s)s.inert=false;var t=document.querySelector('.tools');if(t)t.inert=false;}
+setTimeout(free,12000);document.getElementById('intro').addEventListener('dblclick',free);})();</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="yzTear" x="-4%" y="0" width="108%" height="100%" color-interpolation-filters="sRGB">
   <feTurbulence id="yzTurb" type="fractalNoise" baseFrequency="0.000001 0.05" numOctaves="1" seed="3" result="t"/>
@@ -2338,3 +2352,6 @@ fontsReady.then(()=>{milestone(2);layoutAll();milestone(3);});
 setTimeout(layoutAll,60);
 })();
 </script>
+
+</body>
+</html>
