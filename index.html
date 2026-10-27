@@ -1072,6 +1072,10 @@ html.rm .scr::after{animation:none}
 /* ===== v23 · four band photos at the opening question, each at its own proportions ===== */
 .band{align-items:start}
 .band-ph.has-img{background-color:#000!important}
+/* v24: photos larger */
+.band{grid-column:1 / span 6!important;gap:14px}
+.cas-row .cascade{grid-column:7 / -1!important;position:relative;z-index:2}
+@container story (max-width:760px){.band{grid-column:1 / -1!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}.cas-row .cascade{grid-column:1 / -1!important}}
 /* ---------- tools: brief, notes, phone, motion ---------- */
 .tools{position:fixed;z-index:60;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);right:calc(env(safe-area-inset-right,0px) + 12px);display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
 .tools button{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--bone);border:1px solid var(--ink-3);padding:9px 11px;min-height:36px;transition:border-color var(--t-fast)}
