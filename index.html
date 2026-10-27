@@ -1004,6 +1004,30 @@ html:not(.rm) .cens::after{background:#000;box-shadow:inset 0 0 0 1.5px #fff}
 .outline,.ink .outline,.lyr-ln.o,.neq-k{color:#fff!important;-webkit-text-stroke:0!important}
 .say.gh .ln::after{display:none!important}
 .wall div{color:rgba(255,255,255,.14)!important;-webkit-text-stroke:0!important}
+/* ===== v12 ===== */
+/* title: one word per line, full screen, words arrive one by one while scrolling is held */
+html.title-lock,html.title-lock body{overflow:hidden}
+#h1 .l{display:block;line-height:1.1!important}
+#h1 .w{transition:none}
+/* voices: no white frame or rules */
+.vb{border-top:0}
+.vb-slab{box-shadow:none}
+.vb-grid{border-bottom:0}
+.vb-fig,.vb.r .vb-fig{border:0!important}
+/* censor bar: no white outline */
+html:not(.rm) .cens::after{box-shadow:none;inset:.1em -.06em -.02em}
+/* «Причём переход…»: no rule above */
+.pivot::before{display:none!important}
+.pivot{padding-top:0}
+/* unmask reveals no longer crop accents (Ё, Й) or a long word running past its column */
+@keyframes mk{from{clip-path:inset(0 -60% 100% -2%);transform:translateY(10%)}to{clip-path:inset(-.35em -60% -.25em -2%);transform:none}}
+/* desktop: the title keeps clear of the flash drive and its wire on the right */
+@container story (min-width:900px){#h1{padding-right:calc(max(16px,5.5cqw) + clamp(40px,3.8cqw,60px) + 3cqw)}}
+/* ===== v13 ===== */
+/* no placeholder captions or technical labels (format, ratio, «добавлено», «оригинал», «реконструкция») */
+.vb figcaption,.ph-l,.band-ph span,.add,.kind,.print-l,.air-l,.lyr-note,.gk-b span{display:none!important}
+/* ≠ boxes: no white outline, the «=» is drawn by the blue fill alone */
+.neq-t::before{display:none!important}
 /* ---------- tools: brief, notes, phone, motion ---------- */
 .tools{position:fixed;z-index:60;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);right:calc(env(safe-area-inset-right,0px) + 12px);display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
 .tools button{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--bone);border:1px solid var(--ink-3);padding:9px 11px;min-height:36px;transition:border-color var(--t-fast)}
@@ -1107,7 +1131,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
 
   <!-- 00 OPENING -->
   <section id="s-open" class="sec ink open tex" data-ch="0">
-    <div class="stage" style="--h:320vh" data-scrub="sticky" data-fn="open">
+    <div class="stage" style="--h:100vh" data-scrub="sticky" data-fn="open">
       <div class="stick open-stick">
         <canvas class="ambient" id="ambient" aria-hidden="true"></canvas>
         <div class="open-body" id="openBody">
@@ -1115,10 +1139,9 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
             <span></span>
             <svg class="drive-art" id="wireStart" viewBox="0 0 60 150" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="10" y="4" width="40" height="96" rx="5"/><rect x="18" y="100" width="24" height="26"/><rect x="23" y="108" width="5" height="6"/><rect x="32" y="108" width="5" height="6"/><circle cx="30" cy="24" r="3" fill="#3b63f0" stroke="none"/><line x1="18" y1="44" x2="42" y2="44"/><line x1="18" y1="52" x2="36" y2="52"/></svg>
           </div>
-          <h1 class="h1 wrap" id="h1"><span class="l l1">Где заканчивается</span><span class="l l2 outline">музыкальный</span><span class="l l3">альбом?</span></h1>
+          <h1 class="h1 wrap" id="h1" aria-label="Где заканчивается музыкальный альбом?"><span class="l l1" aria-hidden="true">Где</span><span class="l l1" aria-hidden="true">заканчивается</span><span class="l l2" aria-hidden="true">музыкальный</span><span class="l l3" aria-hidden="true">альбом?</span></h1>
           <div class="wrap open-foot" id="openFoot">
             <p class="deck">Как Year Zero заставляет слушателя выйти за пределы музыки</p>
-            <div class="alt"><span class="mono dim">[ или ]</span><p class="mono">Альбом, который нужно собрать: где заканчивается Year Zero</p></div>
           </div>
         </div>
         <canvas class="static" id="static" aria-hidden="true"></canvas>
@@ -1224,7 +1247,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
   <!-- 02 VOICES (brutalist) -->
   <section id="s-voices" class="sec ink" data-ch="2">
     <article class="vb">
-      <div class="vb-slab wrap"><div class="tag" data-wire="n6"><span class="mono"><i class="dot"></i>Голос 01</span></div><h3 class="vb-t">Capital G</h3></div>
+      <div class="vb-slab wrap" data-wire="n6"><h3 class="vb-t">Capital G</h3></div>
       <div class="vb-grid wrap">
         <figure class="vb-fig"><div class="vb-ph" role="img" aria-label="Место для портрета: говорящий из песни Capital G"></div><figcaption class="mono">Портрет · человек власти · 4:5 · добавлено</figcaption></figure>
         <div class="vb-txt"><p>Возьмём Capital G. Лирика в ней позиционируется как речь человека, для которого политическая лояльность и личная выгода давно срослись. Его самоуверенность тревожнее прямой угрозы: он уже устроился в мире, который для других становится невыносимым.</p></div>
@@ -1235,12 +1258,11 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
           <div class="hz-track lyr-track" aria-label="Место для строк текста песни Capital G">
             <p class="lyr-ln">[ строка 01 · Capital G ]</p><p class="lyr-ln o">[ строка 02 ]</p><p class="lyr-ln">[ строка 03 ]</p><p class="lyr-ln o">[ строка 04 ]</p><p class="lyr-ln">[ строка 05 ]</p><p class="lyr-ln o">[ строка 06 ]</p>
           </div>
-          <span class="lyr-note mono">текст песни · вставить строки</span>
         </div>
       </div>
     </article>
     <article class="vb r" id="vbSoldier"><div class="flag air" aria-hidden="true"><div class="air-in flag-in"><span class="air-t">Art Is Resistance</span><span class="air-l">флаг Art Is Resistance · изображение добавить</span></div></div>
-      <div class="vb-slab wrap"><div class="tag" data-wire="n7"><span class="mono"><i class="dot"></i>Голос 02</span></div><h3 class="vb-t">The Good Soldier</h3></div>
+      <div class="vb-slab wrap" data-wire="n7"><h3 class="vb-t">The Good Soldier</h3></div>
       <div class="vb-grid wrap">
         <figure class="vb-fig"><div class="vb-ph" role="img" aria-label="Место для портрета: говорящий из песни The Good Soldier"></div><figcaption class="mono">Портрет · солдат · 4:5 · добавлено</figcaption></figure>
         <div class="vb-txt"><p>The Good Soldier позволяет услышать другой механизм. А именно попытку удержаться за веру в правильность происходящего, когда индивидуальный опыт этому явно проотиворечит.</p></div>
@@ -1279,7 +1301,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
         <div class="figcap"><span>Рис. 2.1 — Спектрограмма фрагмента My Violent Heart</span><span style="display:flex;gap:12px;align-items:center;flex-wrap:wrap"><button class="inspect" type="button" data-art="a4">Приобщить <b>E05</b></button></span></div>
       </div></div>
     </div>
-    <div class="wrap g pad-xl" style="padding-top:clamp(40px,6cqw,100px)"><p class="disp statement mask">Часть содержания открывалась только после смены способа восприятие восприятия.</p></div>
+    <div class="wrap g pad-xl" style="padding-top:clamp(40px,6cqw,100px)"><p class="disp statement mask">Часть содержания открывалась только после смены способа восприятия.</p></div>
   </section>
 
   <!-- 02 CD -->
@@ -1468,8 +1490,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
 
 <footer class="foot" id="foot">
   <div class="foot-in">
-    <div class="credits mono"><button class="src-btn" type="button" id="srcBtn" aria-expanded="false" aria-controls="srcList">[ Источники ]</button><ul class="src-list" id="srcList"><li class="src-h">Текст и факты</li><li><a href="https://henryjenkins.org/blog/2007/03/transmedia_storytelling_101.html" target="_blank" rel="noopener">Генри Дженкинс — Transmedia Storytelling 101, март 2007</a></li><li>Nine Inch Nails — Year Zero (Interscope, 2007), официальное описание альбома</li><li><a href="https://en.wikipedia.org/wiki/Year_Zero_(game)" target="_blank" rel="noopener">Year Zero (game) — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Campaign_timeline_of_Year_Zero" target="_blank" rel="noopener">Campaign timeline of Year Zero — Wikipedia</a></li><li><a href="https://www.nin.wiki/Year_Zero" target="_blank" rel="noopener">Year Zero — NIN Wiki</a></li><li><a href="https://en.wikipedia.org/wiki/42_Entertainment" target="_blank" rel="noopener">42 Entertainment — Wikipedia</a></li><li><a href="https://www.britannica.com/art/Gesamtkunstwerk" target="_blank" rel="noopener">Gesamtkunstwerk — Britannica</a></li><li><a href="https://web.archive.org/web/2007/http://www.iamtryingtobelieve.com/" target="_blank" rel="noopener">iamtryingtobelieve.com — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.exterminal.net/" target="_blank" rel="noopener">exterminal.net — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.anotherversionofthetruth.com/" target="_blank" rel="noopener">anotherversionofthetruth.com — Wayback Machine</a></li><li class="src-h">Референсы оформления</li><li><a href="https://linkinparkband.tilda.ws" target="_blank" rel="noopener">linkinparkband.tilda.ws</a></li><li><a href="https://abbaband.tilda.ws" target="_blank" rel="noopener">abbaband.tilda.ws</a></li><li><a href="https://punkrock.tilda.ws/en" target="_blank" rel="noopener">punkrock.tilda.ws</a></li><li><a href="https://fightclub-vg.tilda.ws/eng" target="_blank" rel="noopener">fightclub-vg.tilda.ws</a></li><li><a href="https://after-life.ru/1" target="_blank" rel="noopener">after-life.ru</a></li><li><a href="https://war.artmilitonian.com" target="_blank" rel="noopener">war.artmilitonian.com</a></li><li class="src-h">Шрифты</li><li><a href="https://fonts.google.com/specimen/Tektur" target="_blank" rel="noopener">Tektur — Google Fonts</a></li><li><a href="https://fonts.adobe.com/fonts/tonos-mono-variable" target="_blank" rel="noopener">Tonos Mono Variable — Adobe Fonts</a></li><li><a href="https://fonts.google.com/specimen/IBM+Plex+Mono" target="_blank" rel="noopener">IBM Plex Mono — Google Fonts</a></li></ul><span>[ Текст: автор ]</span><span>[ Дизайн и разработка ]</span><a href="#s-open">[ Наверх ↑ ]</a></div>
-    <p class="src mute">«Оригинал YZ» — материалы Year Zero (2007). «Схема» и «реконструкция» — сделано для этого лонгрида.</p>
+    <div class="credits mono"><ul class="src-list" id="srcList" aria-label="Источники"><li class="src-h">Текст и факты</li><li><a href="https://henryjenkins.org/blog/2007/03/transmedia_storytelling_101.html" target="_blank" rel="noopener">Генри Дженкинс — Transmedia Storytelling 101, март 2007</a></li><li>Nine Inch Nails — Year Zero (Interscope, 2007), официальное описание альбома</li><li><a href="https://en.wikipedia.org/wiki/Year_Zero_(game)" target="_blank" rel="noopener">Year Zero (game) — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Campaign_timeline_of_Year_Zero" target="_blank" rel="noopener">Campaign timeline of Year Zero — Wikipedia</a></li><li><a href="https://www.nin.wiki/Year_Zero" target="_blank" rel="noopener">Year Zero — NIN Wiki</a></li><li><a href="https://en.wikipedia.org/wiki/42_Entertainment" target="_blank" rel="noopener">42 Entertainment — Wikipedia</a></li><li><a href="https://www.britannica.com/art/Gesamtkunstwerk" target="_blank" rel="noopener">Gesamtkunstwerk — Britannica</a></li><li><a href="https://web.archive.org/web/2007/http://www.iamtryingtobelieve.com/" target="_blank" rel="noopener">iamtryingtobelieve.com — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.exterminal.net/" target="_blank" rel="noopener">exterminal.net — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.anotherversionofthetruth.com/" target="_blank" rel="noopener">anotherversionofthetruth.com — Wayback Machine</a></li><li class="src-h">Шрифты</li><li><a href="https://fonts.google.com/specimen/Tektur" target="_blank" rel="noopener">Tektur — Google Fonts</a></li><li><a href="https://fonts.adobe.com/fonts/tonos-mono-variable" target="_blank" rel="noopener">Tonos Mono Variable — Adobe Fonts</a></li></ul><span>Мироничева Мария Б25ДЗ10</span><span>Куратор: Пащенко Олег</span><a href="#s-open">[ Наверх ↑ ]</a></div>
     <div class="tools" role="toolbar" aria-label="Режимы просмотра" hidden>
   <button class="pri" id="tBrief" type="button">Brief</button>
   <button id="tNotes" type="button" aria-pressed="false">Notes</button>
@@ -2015,7 +2036,6 @@ function paintLayerA(){const r=sc.getBoundingClientRect();const w=Math.max(320,M
   x.beginPath();x.moveTo(w*.05,h*.84);x.lineTo(w*.93,h*.84);x.stroke();
   x.fillStyle='#0a0b0d';x.fillRect(w*.06,h*.12,w*.42,h*.2);x.fillStyle='#d6d6d2';x.font='500 '+Math.max(10,Math.round(w*.0105))+'px "IBM Plex Mono", monospace';
   x.fillText('[ ПАТРИОТИЧЕСКОЕ СООБЩЕНИЕ БЮРО МОРАЛИ ]',w*.075,h*.23);
-  x.fillStyle='#0c0c0b';x.fillText('[ СЛОЙ А · благополучный сельский пейзаж · 16:9 ]',w*.06,h*.95);
   pct=0;$('#scrPct').textContent='стёрто 0%';}
 /* erase in grid-snapped rectangles; some strips are torn sideways first, like a corrupted frame */
 function erase(a,b){const x=sctx,w=sc.width,R=Math.random;const G=Math.max(8,Math.round(w/150));const dist=Math.hypot(b[0]-a[0],b[1]-a[1]);const n=Math.max(1,Math.ceil(dist/(G*2.5)));
@@ -2148,7 +2168,7 @@ function wordsIn(el,p,a,b){const ws=$$('.w',el);const n=ws.length||1;const span=
 function fitBox(el,hFrac,lineSel){const cs=getComputedStyle(el);const W=el.clientWidth-parseFloat(cs.paddingLeft)-parseFloat(cs.paddingRight);if(W<=0)return;let lo=24,hi=Math.max(40,W*.32);
   const ok=()=>{if(el.scrollHeight>innerHeight*hFrac)return false;const items=lineSel?$$(lineSel,el):$$('.w',el);return items.every(x=>x.offsetWidth<=W-2);};
   for(let i=0;i<16;i++){const mid=(lo+hi)/2;el.style.setProperty('--mf',mid+'px');if(ok())lo=mid;else hi=mid;}el.style.setProperty('--mf',Math.floor(lo)+'px');}
-function fitMegas(){fitBox($('#h1'),.7,'.l');$$('.mega').forEach(m=>fitBox(m,m.classList.contains('gk-def')?.42:.8));
+function fitMegas(){fitBox($('#h1'),.74,'.l');$$('.mega').forEach(m=>fitBox(m,m.classList.contains('gk-def')?.42:.8));
   const gw=$('#gkWord');if(gw){gw.style.setProperty('--gw','100px');const W=gw.parentElement.clientWidth;const tw=gw.firstElementChild.offsetWidth||1;gw.style.setProperty('--gw',Math.floor(100*W*.96/tw)+'px');}}
 /* title page: static + tearing clear as the reader scrolls; then the title words float in */
 const stc=$('#static'),openBody=$('#openBody');let stI=RM?0:1,stRaf=null,stFrames=[],stLastTear=0,stLastDraw=0;
@@ -2162,8 +2182,28 @@ function staticLoop(now){stRaf=null;if(RM||stI<=.01||root.classList.contains('in
     stc.style.opacity=String(Math.min(.96,stI*1.1));}
   if(now-stLastTear>90){stLastTear=now;tearSet(Math.min(1.5,stI*1.7));openBody.style.filter=stI>.03?'url(#yzTear)':'';}
   stRaf=requestAnimationFrame(staticLoop);}
-function fnOpen(p,el){stI=RM?0:1-clamp(p/.42);if(stI<=.01){stc.style.opacity='0';openBody.style.filter='';}else if(!stRaf)stRaf=requestAnimationFrame(staticLoop);
-  wordsIn($('#h1'),p,.26,.8);$('#openFoot').style.setProperty('--fo',RM?1:clamp((p-.84)/.1).toFixed(3));}
+/* v12 title: after the Bureau screen the static clears, then «Где / заканчивается / музыкальный / альбом?»
+   lands word by word on its own. Scrolling is held until the last word and the deck are in (≈3s). */
+function fnOpen(){}
+const H1W=$$('#h1 .w');
+let titleState=RM?2:0; /* 0 waiting · 1 playing · 2 done */
+if(!RM){H1W.forEach(w=>w.style.setProperty('--t','0'));$('#openFoot').style.setProperty('--fo','0');}
+const LOCK_KEYS=new Set([' ','Spacebar','PageDown','PageUp','ArrowDown','ArrowUp','Home','End']);
+function holdScroll(e){if(e.type==='keydown'&&!LOCK_KEYS.has(e.key))return;e.preventDefault();}
+function lockScroll(on){root.classList.toggle('title-lock',on);
+  ['wheel','touchmove'].forEach(t=>{if(on)addEventListener(t,holdScroll,{passive:false});else removeEventListener(t,holdScroll,{passive:false});});
+  if(on)addEventListener('keydown',holdScroll);else removeEventListener('keydown',holdScroll);}
+function playTitle(){if(titleState)return;titleState=1;
+  if(RM){H1W.forEach(w=>w.style.setProperty('--t','1'));$('#openFoot').style.setProperty('--fo','1');titleState=2;return;}
+  scrollTo(0,0);lockScroll(true);stI=1;if(!stRaf)stRaf=requestAnimationFrame(staticLoop);
+  const STATIC=700,START=420,STEP=520,DUR=560,n=H1W.length,end=START+(n-1)*STEP+DUR,t0=performance.now();
+  (function tick(now){const e=now-t0;stI=1-clamp(e/STATIC);if(stI<=.01){stc.style.opacity='0';openBody.style.filter='';}
+    H1W.forEach((w,i)=>w.style.setProperty('--t',easeOut(clamp((e-START-i*STEP)/DUR)).toFixed(3)));
+    $('#openFoot').style.setProperty('--fo',clamp((e-end)/380).toFixed(3));
+    if(e<end+420)requestAnimationFrame(tick);
+    else{H1W.forEach(w=>w.style.setProperty('--t','1'));$('#openFoot').style.setProperty('--fo','1');stI=0;lockScroll(false);titleState=2;}})(t0);}
+/* safety: if the Bureau screen was released some other way, the title still plays */
+setTimeout(()=>{if(!titleState&&!root.classList.contains('intro-on'))playTitle();},12500);
 function fnQnew(p,el){const q1=$('.q1',el),q2=$('.q2',el);wordsIn(q1,p,+q1.dataset.a,+q1.dataset.b);wordsIn(q2,p,+q2.dataset.a,+q2.dataset.b);q1.style.setProperty('--q1o',RM?1:(1-clamp((p-.44)/.08)).toFixed(3));if(RM){q1.style.position='static';q2.style.position='static';}}
 function fnMega(p,el){$$('.mega',el).forEach(m=>wordsIn(m,p,+m.dataset.a,+m.dataset.b));}
 /* Gesamtkunstwerk: placeholder image blocks build up, the word fills the screen, the definition floats in */
@@ -2180,7 +2220,7 @@ function layoutPages(){const st=$('#s-pages .stage'),tr=$('#hzTrack');if(!st||!t
 let airArmed=true;
 function flashAir(el){const st=$('.red-stick',el),air=$('.air',el);air.classList.add('on');let f=0;(function step(){if(f>=8){st.style.filter='';air.classList.remove('on');return;}tearSet(f<6?1.1:.3);st.style.filter='url(#yzTear)';f++;setTimeout(step,60);})();}
 /* footer */
-function updFoot(){const f=$('#foot');if(!f)return;const end=scrollY+innerHeight>=document.documentElement.scrollHeight-24;f.classList.toggle('on',end);if(end&&!srcOpened){srcOpened=true;setTimeout(()=>{const l=$('#srcList');if(l){l.classList.add('open');$('#srcBtn').setAttribute('aria-expanded','true');}},500);}}
+function updFoot(){const f=$('#foot');if(!f)return;const end=scrollY+innerHeight>=document.documentElement.scrollHeight-24;f.classList.toggle('on',end);if(end&&!srcOpened){srcOpened=true;setTimeout(()=>{const l=$('#srcList');if(l){l.classList.add('open');}},500);}}
 
 /* ================= v6 logic ================= */
 function splitDeep(el){if(el.dataset.split)return;const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);const nodes=[];while(tw.nextNode())nodes.push(tw.currentNode);
@@ -2351,7 +2391,7 @@ function introTick(){if(closed)return;const t=(performance.now()-introT0)/INTRO_
   requestAnimationFrame(introTick);}
 function milestone(n){reached=Math.max(reached,n);}
 function closeIntro(){if(closed)return;closed=true;
-  const finish=()=>{intro.hidden=true;root.classList.remove('intro-on');inertEls.forEach(e=>e&&(e.inert=false));const h=$('#h1');h.setAttribute('tabindex','-1');h.focus({preventScroll:true});layoutAll();setTimeout(()=>tvBurst(5,0),30);};
+  const finish=()=>{intro.hidden=true;root.classList.remove('intro-on');inertEls.forEach(e=>e&&(e.inert=false));const h=$('#h1');h.setAttribute('tabindex','-1');h.focus({preventScroll:true});layoutAll();playTitle();setTimeout(()=>tvBurst(5,0),30);};
   if(RM){finish();return;}
   const bm=$('.bm');let f=0;(function step(){if(f>=4){bm.style.filter='';bm.style.transform='';bm.style.clipPath='';finish();return;}tearSet(.9);bm.style.filter='url(#yzTear)';bm.style.transform=`translateX(${((Math.random()-.5)*24).toFixed(1)}px)`;if(f===3)bm.style.clipPath='inset(44% 0 46% 0)';f++;setTimeout(step,55);})();}
 
