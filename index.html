@@ -805,7 +805,7 @@ html.rm .gk-def{position:static}
 /* footer slides up at the end */
 .foot{position:fixed;left:0;right:0;bottom:0;z-index:58;background:var(--ink);border-top:1px solid var(--heat);color:var(--bone);transform:translateY(105%);visibility:hidden;transition:transform 520ms var(--ease),visibility 0s linear 520ms}
 .foot.on{transform:none;visibility:visible;transition:transform 520ms var(--ease),visibility 0s}
-.foot-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:14px calc(env(safe-area-inset-bottom,0px) + 14px);padding-left:max(16px,env(safe-area-inset-left,0px),4cqw);padding-right:max(16px,env(safe-area-inset-right,0px),4cqw)}
+.foot-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-block:14px 14px;padding-left:max(16px,env(safe-area-inset-left,0px),4cqw);padding-right:max(16px,env(safe-area-inset-right,0px),4cqw)}
 .foot .credits{border:0;margin:0;padding:0;display:flex;gap:10px 22px;flex-wrap:wrap}
 .foot .src{margin:0;flex:1 1 260px;color:var(--mute-ink)}
 .foot .tools{position:static;max-width:none}
@@ -1552,7 +1552,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
 
 
 
-<footer class="foot" id="foot">
+<div class="foot" id="foot" role="contentinfo">
   <div class="foot-in">
     <div class="credits mono"><ul class="src-list" id="srcList" aria-label="Источники"><li class="src-h">Текст и факты</li><li><a href="https://henryjenkins.org/blog/2007/03/transmedia_storytelling_101.html" target="_blank" rel="noopener">Генри Дженкинс — Transmedia Storytelling 101, март 2007</a></li><li>Nine Inch Nails — Year Zero (Interscope, 2007), официальное описание альбома</li><li><a href="https://en.wikipedia.org/wiki/Year_Zero_(game)" target="_blank" rel="noopener">Year Zero (game) — Wikipedia</a></li><li><a href="https://en.wikipedia.org/wiki/Campaign_timeline_of_Year_Zero" target="_blank" rel="noopener">Campaign timeline of Year Zero — Wikipedia</a></li><li><a href="https://www.nin.wiki/Year_Zero" target="_blank" rel="noopener">Year Zero — NIN Wiki</a></li><li><a href="https://en.wikipedia.org/wiki/42_Entertainment" target="_blank" rel="noopener">42 Entertainment — Wikipedia</a></li><li><a href="https://www.britannica.com/art/Gesamtkunstwerk" target="_blank" rel="noopener">Gesamtkunstwerk — Britannica</a></li><li><a href="https://web.archive.org/web/2007/http://www.iamtryingtobelieve.com/" target="_blank" rel="noopener">iamtryingtobelieve.com — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.exterminal.net/" target="_blank" rel="noopener">exterminal.net — Wayback Machine</a></li><li><a href="https://web.archive.org/web/2007/http://www.anotherversionofthetruth.com/" target="_blank" rel="noopener">anotherversionofthetruth.com — Wayback Machine</a></li><li class="src-h">Шрифты</li><li><a href="https://fonts.google.com/specimen/Tektur" target="_blank" rel="noopener">Tektur — Google Fonts</a></li><li><a href="https://fonts.adobe.com/fonts/tonos-mono-variable" target="_blank" rel="noopener">Tonos Mono Variable — Adobe Fonts</a></li></ul><span class="cred"><span class="gl" data-text="Мироничева Мария Б25ДЗ10" tabindex="0">Мироничева Мария Б25ДЗ10</span><span class="gl" data-text="Куратор: Пащенко Олег" tabindex="0">Куратор: Пащенко Олег</span></span><a href="#s-open">[ Наверх ↑ ]</a></div>
     <div class="tools" role="toolbar" aria-label="Режимы просмотра" hidden>
@@ -1562,7 +1562,35 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
   <button id="tRM" type="button" aria-pressed="false">Reduce motion</button>
 </div>
   </div>
+<!-- course web-ring (code supplied by the course; restyled below to match the longread) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>
+.course-webring { margin-top:64px; padding:24px 0; border-top:1px solid currentColor; font-family:Inter,sans-serif; font-size:16px; line-height:1.5; }
+.course-webring h2 { margin:0 0 16px; font-family:Inter,sans-serif; font-size:20px; font-weight:600; line-height:1.3; }
+.course-webring__nav { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:12px 24px; align-items:start; }
+.course-webring__nav a { display:flex; align-items:center; min-height:44px; padding:10px 0; box-sizing:border-box; color:inherit; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
+.course-webring__nav a:last-child { justify-content:flex-end; text-align:right; }
+.course-webring__nav a:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+.course-webring--entry .course-webring__nav { grid-template-columns:1fr 1fr; }
+@media (max-width:720px) {
+  .course-webring__nav, .course-webring--entry .course-webring__nav { grid-template-columns:1fr; }
+  .course-webring__nav a:last-child { justify-content:flex-start; text-align:left; }
+}
+/* longread styling: a separate block under the credits, same mono type, black ground, white text */
+.foot .course-webring{margin:0;padding:14px max(16px,env(safe-area-inset-right,0px),4cqw) calc(env(safe-area-inset-bottom,0px) + 14px) max(16px,env(safe-area-inset-left,0px),4cqw);border-top:1px solid var(--heat);background:#000;color:#fff;font-family:var(--f-mono);font-size:var(--s);letter-spacing:.06em;text-transform:uppercase}
+.foot .course-webring h2{margin:0 0 4px;font-family:var(--f-mono);font-size:var(--s);font-weight:500;letter-spacing:.1em;color:#fff;opacity:.6}
+.foot .course-webring__nav{gap:4px 24px}
+.foot .course-webring__nav a{min-height:36px;padding:6px 0;text-decoration-thickness:1px}
+.foot .course-webring__nav a:hover{color:var(--heat);text-decoration-color:var(--heat)}
+</style>
+<footer class="course-webring course-webring--entry">
+  <h2>Веб-ринг</h2>
+  <nav class="course-webring__nav" aria-label="Веб-ринг проектов">
+    <a target="_top" href="https://docs.google.com/spreadsheets/d/1moFgJsWmO2xyTYsfRRvhG63S1ru9MhJKDSAw2pOUqyw/htmlview?gid=93859566&amp;range=A1:E35">Все проекты</a>
+    <a target="_top" href="https://annutka999.github.io/perception-of-time/">Начать маршрут с «Всё быстрее» →</a>
+  </nav>
 </footer>
+</div>
 
 
 
