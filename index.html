@@ -1045,6 +1045,11 @@ html:not(.rm) .gl:hover::after,html:not(.rm) .gl:focus-visible::after{opacity:1;
 .end-static{position:fixed;inset:0;width:100%;height:100%;z-index:72;pointer-events:none;image-rendering:pixelated;opacity:0;display:none}
 .end-static.on{display:block}
 html.rm .end-static{display:none!important}
+/* ===== v17 · real images in place of placeholders ===== */
+.has-img{background-image:var(--img)!important;background-size:cover!important;background-position:center!important;background-color:#000!important}
+.has-img::before,.has-img::after{display:none!important}
+.has-img>*:not(.cover):not(.stamp){visibility:hidden}
+.layerB.has-img>*{display:none}
 /* ---------- tools: brief, notes, phone, motion ---------- */
 .tools{position:fixed;z-index:60;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);right:calc(env(safe-area-inset-right,0px) + 12px);display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
 .tools button{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--ink);color:var(--bone);border:1px solid var(--ink-3);padding:9px 11px;min-height:36px;transition:border-color var(--t-fast)}
@@ -1176,7 +1181,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
   <!-- 01 BODY -->
   <section id="s-c1b" class="sec ink pad-l" data-ch="1">
     <div class="wrap g cas-row">
-      <div class="band" aria-hidden="true"><div class="band-ph"><span>фото группы</span></div><div class="band-ph"><span>фото группы</span></div><div class="band-ph"><span>фото группы</span></div><div class="band-ph"><span>фото группы</span></div></div>
+      <div class="band" aria-hidden="true"><div data-img="img/band-1.jpg" class="band-ph"><span>фото группы</span></div><div data-img="img/band-2.jpg" class="band-ph"><span>фото группы</span></div><div data-img="img/band-3.jpg" class="band-ph"><span>фото группы</span></div><div data-img="img/band-4.jpg" class="band-ph"><span>фото группы</span></div></div>
       <p class="cascade mask"><span>Что нужно было сделать чтобы</span><span style="--in:14%">услышать новый альбом</span><span style="--in:38%">Nine Inch Nails,</span><span style="--in:22%">в феврале 2007 года?</span></p>
     </div>
     <div class="wrap g ev" style="margin-top:clamp(64px,8cqw,140px)">
@@ -1187,7 +1192,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
         <p style="margin:0 0 1.1em">Перыая флешка с ещё не выпущенным синглом My Violent Heart появилась в туалете концертной площадки в Лиссабоне. На других концертах находили новые.</p>
         <p style="margin:0">Музыка распространялась раньше релиза, но вместе с ней распространялась и задача:</p>
       </div>
-      <div class="media rv"><div class="ph" style="aspect-ratio:4/5"><div class="ph-l"><b>Фото · флешка</b><span class="kind orig">Оригинал YZ · файла нет</span><span>флешка на кафеле, документально · 4:5</span></div><button class="cover" type="button" data-art="a1" aria-label="Приобщить к делу улику E01: флешка"><span class="inspect">Приобщить <b>E01</b></span></button></div></div>
+      <div class="media rv"><div data-img="img/flash-drive.jpg" class="ph" style="aspect-ratio:4/5"><div class="ph-l"><b>Фото · флешка</b><span class="kind orig">Оригинал YZ · файла нет</span><span>флешка на кафеле, документально · 4:5</span></div><button class="cover" type="button" data-art="a1" aria-label="Приобщить к делу улику E01: флешка"><span class="inspect">Приобщить <b>E01</b></span></button></div></div>
     </div>
     <div class="stage say-stage" style="--h:175vh" data-scrub="sticky" data-fn="say"><div class="stick say-stick"><div class="wrap g say-row" style="padding-block:0"><p data-mode="settle" class="say q"><span class="ln ">определить,</span> <span class="ln hl i1">какие из попавших к тебе вещей</span> <span class="ln ">вообще относятся к альбому<span class="qm plain">?</span></span></p></div></div></div>
   </section>
@@ -1218,7 +1223,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
       <div class="site rv">
         <div class="callout l mono"><b>По официальной версии</b>для защиты от биотерроризма</div>
         <div class="win"><div class="win-bar"><span>● ● ●</span><span class="mute">iamtryingtobelieve.com</span></div>
-          <div class="ph" style="aspect-ratio:16/10"><div class="ph-l"><b>Скриншот · сайт о Parepin</b><span class="kind orig">Оригинал YZ · файла нет</span><span>как он выглядел в 2007 · 16:10 · из веб-архива</span></div><div class="susp" aria-hidden="true"><span>по подозрениям внутри истории</span></div><button class="cover" type="button" data-art="a3" aria-label="Приобщить к делу улику E04: сайт о Parepin"><span class="inspect">Приобщить <b>E04</b></span></button></div></div>
+          <div data-img="img/parepin.jpg" class="ph" style="aspect-ratio:16/10"><div class="ph-l"><b>Скриншот · сайт о Parepin</b><span class="kind orig">Оригинал YZ · файла нет</span><span>как он выглядел в 2007 · 16:10 · из веб-архива</span></div><div class="susp" aria-hidden="true"><span>по подозрениям внутри истории</span></div><button class="cover" type="button" data-art="a3" aria-label="Приобщить к делу улику E04: сайт о Parepin"><span class="inspect">Приобщить <b>E04</b></span></button></div></div>
         <div class="callout r mono"><b>По подозрениям внутри истории</b><br>для управления населением</div>
       </div>
     </div>
@@ -1248,7 +1253,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
       <div class="dstack rv"><span class="dymo">Роб Шеридан</span><span class="mono mute">арт-директор</span><span class="dymo" style="--r:1.4deg">42 Entertainment</span></div>
       <p class="body lead">Резнор задумал их как отдельные взгляды изнутри будущего антиутопического мира, без сквозного сюжета от начала к концу. Очевидно, что ему песни были понятны, поскольку он знал предысторию и являлся их создателем.</p>
     </div>
-    <div class="wrap duo" aria-hidden="true"><div class="ph duo-a"><div class="ph-l"><b>Изображение</b><span class="add">добавлено</span></div></div><div class="ph duo-b"><div class="ph-l"><b>Изображение</b><span class="add">добавлено</span></div></div></div>
+    <div class="wrap duo" aria-hidden="true"><div data-img="img/image-1.jpg" class="ph duo-a"><div class="ph-l"><b>Изображение</b><span class="add">добавлено</span></div></div><div data-img="img/image-2.jpg" class="ph duo-b"><div class="ph-l"><b>Изображение</b><span class="add">добавлено</span></div></div></div>
     <div class="stage say-stage" style="--h:175vh" data-scrub="sticky" data-fn="say"><div class="stick say-stick"><div class="wrap g say-row" style="padding-block:0"><p class="say stk"><span class="ln ">Слушатель</span> <span class="ln red">её не знал.</span></p></div></div></div>
     <div class="wrap g"><p class="body lead">Работая с арт-директором Робом Шериданом и командой 42 Entertainment, Резнор хотел сохранить музыку и другие материалы частями одного проекта.</p></div>
     <div class="stage neq-stage" style="--h:340vh" data-scrub="sticky" data-fn="neq"><div class="stick neq-stick"><div class="wrap neq" id="neq">
@@ -1266,7 +1271,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
     <article class="vb">
       <div class="vb-slab wrap" data-wire="n6"><h3 class="vb-t">Capital G</h3></div>
       <div class="vb-grid wrap">
-        <figure class="vb-fig"><div class="vb-ph" role="img" aria-label="Место для портрета: говорящий из песни Capital G"></div><figcaption class="mono">Портрет · человек власти · 4:5 · добавлено</figcaption></figure>
+        <figure class="vb-fig"><div data-img="img/capital-g.jpg" class="vb-ph" role="img" aria-label="Место для портрета: говорящий из песни Capital G"></div><figcaption class="mono">Портрет · человек власти · 4:5 · добавлено</figcaption></figure>
         <div class="vb-txt"><p>Возьмём Capital G. Лирика в ней позиционируется как речь человека, для которого политическая лояльность и личная выгода давно срослись. Его самоуверенность тревожнее прямой угрозы: он уже устроился в мире, который для других становится невыносимым.</p></div>
       </div>
     
@@ -1278,10 +1283,10 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
         </div>
       </div>
     </article>
-    <article class="vb r" id="vbSoldier"><div class="flag air" aria-hidden="true"><div class="air-in flag-in"><span class="air-t">Art Is Resistance</span><span class="air-l">флаг Art Is Resistance · изображение добавить</span></div></div>
+    <article class="vb r" id="vbSoldier"><div class="flag air" aria-hidden="true"><div data-img="img/air-flag.jpg" class="air-in flag-in"><span class="air-t">Art Is Resistance</span><span class="air-l">флаг Art Is Resistance · изображение добавить</span></div></div>
       <div class="vb-slab wrap" data-wire="n7"><h3 class="vb-t">The Good Soldier</h3></div>
       <div class="vb-grid wrap">
-        <figure class="vb-fig"><div class="vb-ph" role="img" aria-label="Место для портрета: говорящий из песни The Good Soldier"></div><figcaption class="mono">Портрет · солдат · 4:5 · добавлено</figcaption></figure>
+        <figure class="vb-fig"><div data-img="img/good-soldier.jpg" class="vb-ph" role="img" aria-label="Место для портрета: говорящий из песни The Good Soldier"></div><figcaption class="mono">Портрет · солдат · 4:5 · добавлено</figcaption></figure>
         <div class="vb-txt"><p>The Good Soldier позволяет услышать другой механизм. А именно попытку удержаться за веру в правильность происходящего, когда индивидуальный опыт этому явно проотиворечит.</p></div>
       </div>
     </article>
@@ -1356,7 +1361,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
   <section id="s-scratch" class="sec ink" data-ch="3" style="padding-bottom:clamp(72px,8cqw,140px)">
     <div class="wrap" style="margin-bottom:14px"><div class="tag" data-wire="n10"><span class="mono"><i class="dot"></i>Улика 07</span><span class="dymo">Another Version of the Truth</span></div></div>
     <div class="scr" id="scr">
-      <div class="layerB"><div class="ruins"></div><div class="smoke"></div>
+      <div data-img="img/avott-b.jpg" class="layerB"><div class="ruins"></div><div class="smoke"></div>
         <div class="ph-l"><b>Слой Б · разрушенный ландшафт</b></div>
         <div class="ph-l r" style="top:auto;bottom:12px"><b>Другая версия текста</b></div></div>
       <canvas id="scrCanvas" aria-label="Верхний слой: благополучный пейзаж. Зажмите и проведите, чтобы стереть"></canvas>
@@ -1374,10 +1379,10 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
       <div class="stick hz-stick">
         <div class="hz-track" id="hzTrack">
           <div class="pg pg-head"><p class="hz-t">Страницы, через которые можно было пройти</p><span class="add">добавлено · цитаты из текста</span></div>
-          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>iamtryingtobelieve.com</span></div><div class="ph pg-shot"><div class="ph-l"><b>Скриншот · сайт о Parepin</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Фраза становилась доменным именем. За ним обнаруживался сайт о Parepin: вымышленном веществе, которое добавляют в воду.»</p></article>
-          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>exterminal.net</span></div><div class="ph pg-shot"><div class="ph-l"><b>Скриншот · exterminal.net</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Появлялся двоичный код, расшифровка которого давала адрес exterminal.net.»</p></article>
-          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>Another Version of the Truth</span></div><div class="ph pg-shot"><div class="ph-l"><b>Скриншот · слой А и слой Б</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Сначала посетитель видел благополучный сельский пейзаж и патриотическое сообщение вымышленного Бюро морали.»</p></article>
-          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>Форум</span></div><div class="ph pg-shot"><div class="ph-l"><b>Скриншот · форум</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Отсюда можно было перейти к форуму с разговорами жителей этого мира.»</p></article>
+          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>iamtryingtobelieve.com</span></div><div data-img="img/parepin.jpg" class="ph pg-shot"><div class="ph-l"><b>Скриншот · сайт о Parepin</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Фраза становилась доменным именем. За ним обнаруживался сайт о Parepin: вымышленном веществе, которое добавляют в воду.»</p></article>
+          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>exterminal.net</span></div><div data-img="img/exterminal.jpg" class="ph pg-shot"><div class="ph-l"><b>Скриншот · exterminal.net</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Появлялся двоичный код, расшифровка которого давала адрес exterminal.net.»</p></article>
+          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>Another Version of the Truth</span></div><div data-img="img/avott.jpg" class="ph pg-shot"><div class="ph-l"><b>Скриншот · слой А и слой Б</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Сначала посетитель видел благополучный сельский пейзаж и патриотическое сообщение вымышленного Бюро морали.»</p></article>
+          <article class="pg"><div class="pg-win"><div class="pg-bar mono"><span aria-hidden="true">● ● ●</span><span>Форум</span></div><div data-img="img/forum.jpg" class="ph pg-shot"><div class="ph-l"><b>Скриншот · форум</b><span class="kind orig">Оригинал YZ · файла нет</span></div></div></div><p class="pg-q">«Отсюда можно было перейти к форуму с разговорами жителей этого мира.»</p></article>
         </div>
       </div>
     </div>
@@ -1386,7 +1391,7 @@ setTimeout(free,12000);document.getElementById('intro').addEventListener('dblcli
   <!-- 03 REDACTION BAND -->
   <section id="s-red" class="sec ink" data-ch="3">
     <div class="stage" style="--h:380vh" data-scrub="sticky" data-fn="red">
-      <div class="stick red-stick"><div class="air" aria-hidden="true"><div class="air-in"><span class="air-t">Art Is Resistance</span><span class="air-l">изображение · Art Is Resistance · добавить</span></div></div><div class="wrap g"><p class="disp red-q" id="redq">В мире, где информацию скрывают, её приходится добывать.</p></div></div>
+      <div class="stick red-stick"><div class="air" aria-hidden="true"><div data-img="img/air.jpg" class="air-in"><span class="air-t">Art Is Resistance</span><span class="air-l">изображение · Art Is Resistance · добавить</span></div></div><div class="wrap g"><p class="disp red-q" id="redq">В мире, где информацию подавляют, её приходится добывать.</p></div></div>
     </div>
   </section>
 
@@ -2045,6 +2050,7 @@ function fnPair(p,el){const a=$('.pair1',el);if(a)a.style.setProperty('--px',RM?
 const scr=$('#scr'),sc=$('#scrCanvas');let sctx=null,drawing=false,last=null,pct=0,armed=false,demoDone=false;
 function paintLayerA(){const r=sc.getBoundingClientRect();const w=Math.max(320,Math.round(r.width)),h=Math.max(180,Math.round(r.height));sc.width=w;sc.height=h;sctx=sc.getContext('2d');const x=sctx;
   x.globalCompositeOperation='source-over';
+  if(avottA){const r2=Math.max(w/avottA.naturalWidth,h/avottA.naturalHeight),iw=avottA.naturalWidth*r2,ih=avottA.naturalHeight*r2;x.drawImage(avottA,(w-iw)/2,(h-ih)/2,iw,ih);pct=0;erasedArea=0;$('#scrPct').textContent='стёрто 0%';return;}
   const g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,'#c5c6c3');g.addColorStop(.55,'#d6d6d2');g.addColorStop(1,'#c4c5c1');x.fillStyle=g;x.fillRect(0,0,w,h);
   x.fillStyle='#f4efe2';x.beginPath();x.arc(w*.78,h*.26,h*.09,0,7);x.fill();
   x.fillStyle='#b9bdb0';x.beginPath();x.moveTo(0,h*.66);x.bezierCurveTo(w*.25,h*.52,w*.45,h*.72,w*.7,h*.58);x.bezierCurveTo(w*.85,h*.52,w*.95,h*.6,w,h*.58);x.lineTo(w,h);x.lineTo(0,h);x.fill();
@@ -2060,8 +2066,8 @@ function erase(a,b){const x=sctx,w=sc.width,R=Math.random;const G=Math.max(8,Mat
   for(let s2=0;s2<=n;s2++){const px=a[0]+(b[0]-a[0])*s2/n,py=a[1]+(b[1]-a[1])*s2/n;const k=2+((R()*3)|0);
     for(let i=0;i<k;i++){const rw=G*(2+((R()*9)|0)),rh=G*(1+((R()*3)|0));const rx=Math.round((px-rw/2+(R()-.5)*G*7)/G)*G,ry=Math.round((py-rh/2+(R()-.5)*G*4)/G)*G;
       if(R()<.28){try{const band=x.getImageData(0,ry,w,rh);x.putImageData(band,Math.round((R()-.5)*G*12),ry);}catch(e){}}
-      x.clearRect(rx,ry,rw,rh);}}}
-let measT=0;function measure(force){const now=performance.now();if(!force&&now-measT<250)return;measT=now;const w=sc.width,h=sc.height;const d=sctx.getImageData(0,0,w,h).data;let n=0,t=0;for(let y=4;y<h;y+=16)for(let x=4;x<w;x+=16){t++;if(d[(y*w+x)*4+3]<40)n++;}pct=n/t;$('#scrPct').textContent='стёрто '+Math.round(pct*100)+'%';if(pct>.35)unlock();}
+      x.clearRect(rx,ry,rw,rh);erasedArea+=rw*rh*.55;}}}
+let measT=0,erasedArea=0;function measure(force){const now=performance.now();if(!force&&now-measT<250)return;measT=now;const w=sc.width,h=sc.height;try{const d=sctx.getImageData(0,0,w,h).data;let n=0,t=0;for(let y=4;y<h;y+=16)for(let x=4;x<w;x+=16){t++;if(d[(y*w+x)*4+3]<40)n++;}pct=n/t;}catch(e){pct=Math.min(1,erasedArea/(w*h));}$('#scrPct').textContent='стёрто '+Math.round(pct*100)+'%';if(pct>.35)unlock();}
 function unlock(){$('#forum').classList.add('open');$('#forumHint').textContent='открыто';markFound('n10');}
 function pos(e){const r=sc.getBoundingClientRect();return[(e.clientX-r.left)*sc.width/r.width,(e.clientY-r.top)*sc.height/r.height];}
 sc.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'&&!armed)return;drawing=true;last=pos(e);sc.setPointerCapture(e.pointerId);e.preventDefault();});
@@ -2127,11 +2133,11 @@ let gv=0,lastY=scrollY,lastTs=performance.now(),gvRaf=null;
 function gvTick(){gv*=0.86;if(gv<.01)gv=0;root.style.setProperty('--gv',gv.toFixed(3));root.classList.toggle('moving',gv>0);gvRaf=gv?requestAnimationFrame(gvTick):null;}
 addEventListener('scroll',()=>{if(RM)return;const now=performance.now(),dy=Math.abs(scrollY-lastY),dt=Math.max(8,now-lastTs);lastY=scrollY;lastTs=now;
   gv=Math.min(1,Math.max(gv,(dy/dt)/4));scrollGlitch(dy,dy/dt,now);},{passive:true});
-/* v16: the page keeps breaking up while it is being scrolled — a burst every ~300–540px of travel, bigger and more often when scrolling fast */
-let sgAcc=0,sgNext=300+Math.random()*220;
+/* v16: the page keeps breaking up while it is being scrolled — a short burst every ~750–1200px of travel, at most one per second */
+let sgAcc=0,sgNext=750+Math.random()*450;
 function scrollGlitch(dy,v,now){if(dy>innerHeight*1.5)return;sgAcc+=dy;
-  if(v>2.2){tvBurst(6,520);sgAcc=0;return;}
-  if(sgAcc>=sgNext){const fast=v>.9;if(tvBurst(fast?5:3+((Math.random()*2)|0),fast?360:460)!==false){sgAcc=0;sgNext=300+Math.random()*240;}}}
+  if(v>3){if(tvBurst(4,1100)!==false)sgAcc=0;return;}
+  if(sgAcc>=sgNext){if(tvBurst(v>1.2?4:3,1000)!==false){sgAcc=0;sgNext=750+Math.random()*450;}}}
 /* decode: mono labels resolve from noise the first time they enter the screen */
 const NOISE='█▓▒░/\\#01ЖΞ<>';
 const DEC=[];
@@ -2413,6 +2419,9 @@ function fileArt(id,btn){const a=ARTS[id];if(!a||btn.classList.contains('filed')
   a.nodes.forEach(markFound);}
 $$('[data-art]').forEach(b=>{b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>fileArt(b.dataset.art,b));});
 
+/* ---------- images: drop files into img/ with these names and they replace the placeholders; missing files leave the placeholder ---------- */
+$$('[data-img]').forEach(el=>{const u=el.dataset.img;const im=new Image();im.onload=()=>{el.style.setProperty('--img',`url("${u}")`);el.classList.add('has-img');};im.src=u;});
+let avottA=null;(function(){const im=new Image();im.onload=()=>{avottA=im;if(sctx)paintLayerA();};im.src='img/avott-a.jpg';})();
 /* ---------- session clock + file-opened stamp (local time only; nothing about the visitor) ---------- */
 const t0=Date.now();const pad=n=>String(n).padStart(2,'0');
 (function(){if(!$('#opened'))return;const d=new Date();$('#opened').textContent=pad(d.getHours())+':'+pad(d.getMinutes());$('#opened').setAttribute('datetime',d.toISOString());})();
