@@ -2028,7 +2028,7 @@ function fnSpec(p){const cv=$('#spec');if(!specA)return;const x=cv.getContext('2
 const ADDR='exterminal.net',BYTES=[...ADDR].map(c=>c.charCodeAt(0).toString(2).padStart(8,'0'));
 $('#bin').textContent=(BYTES.join(' ')+' ').repeat(3).trim();
 (function(){const box=$('#bytes'),out=$('#decOut');const got=new Array(BYTES.length).fill(false);
-  function show(){const txt=BYTES.map((b,i)=>got[i]?ADDR[i]:'·').join('');out.innerHTML=got.every(Boolean)?`→ <b>${ADDR}</b> · адрес из текста`:txt;if(got.every(Boolean))markFound('n9');}
+  function show(){const txt=BYTES.map((b,i)=>got[i]?ADDR[i]:'·').join('');out.innerHTML=got.every(Boolean)?`→ <b>${ADDR}</b>`:txt;if(got.every(Boolean))markFound('n9');}
   BYTES.forEach((b,i)=>{const k=document.createElement('button');k.type='button';k.className='byte';k.setAttribute('aria-label',`Байт ${i+1}: ${b.split('').join(' ')}. Расшифровать`);k.innerHTML=`<span>${b}</span><span class="ch" aria-hidden="true"></span>`;
     k.addEventListener('click',()=>{got[i]=true;k.classList.add('done');$('.ch',k).textContent=ADDR[i];k.setAttribute('aria-label',`Байт ${i+1}: буква ${ADDR[i]}`);show();});box.appendChild(k);});
   $('#decAll').addEventListener('click',()=>{$$('.byte',box).forEach(k=>k.click());});})();
@@ -2126,7 +2126,12 @@ function updSlice(){const vh=innerHeight;SLICE.forEach(e=>{const r=e.getBounding
 let gv=0,lastY=scrollY,lastTs=performance.now(),gvRaf=null;
 function gvTick(){gv*=0.86;if(gv<.01)gv=0;root.style.setProperty('--gv',gv.toFixed(3));root.classList.toggle('moving',gv>0);gvRaf=gv?requestAnimationFrame(gvTick):null;}
 addEventListener('scroll',()=>{if(RM)return;const now=performance.now(),dy=Math.abs(scrollY-lastY),dt=Math.max(8,now-lastTs);lastY=scrollY;lastTs=now;
-  gv=Math.min(1,Math.max(gv,(dy/dt)/4));},{passive:true});
+  gv=Math.min(1,Math.max(gv,(dy/dt)/4));scrollGlitch(dy,dy/dt,now);},{passive:true});
+/* v16: the page keeps breaking up while it is being scrolled — a burst every ~300–540px of travel, bigger and more often when scrolling fast */
+let sgAcc=0,sgNext=300+Math.random()*220;
+function scrollGlitch(dy,v,now){if(dy>innerHeight*1.5)return;sgAcc+=dy;
+  if(v>2.2){tvBurst(6,520);sgAcc=0;return;}
+  if(sgAcc>=sgNext){const fast=v>.9;if(tvBurst(fast?5:3+((Math.random()*2)|0),fast?360:460)!==false){sgAcc=0;sgNext=300+Math.random()*240;}}}
 /* decode: mono labels resolve from noise the first time they enter the screen */
 const NOISE='█▓▒░/\\#01ЖΞ<>';
 const DEC=[];
@@ -2156,7 +2161,7 @@ function tvFrame(I,big,hold){const w=tv.width,h=tv.height,R=Math.random,G=8;tctx
   for(let k=0;k<2+R()*4;k++){const y=(R()*h)|0;tctx.fillStyle=R()<.5?'rgba(214,214,210,.22)':'rgba(10,11,13,.5)';tctx.fillRect(0,y,w,1+((R()*2)|0));}
   if(big&&hold!=null){tctx.fillStyle='rgba(10,11,13,.3)';tctx.fillRect(0,hold*h,w,h*.08);}
   tctx.fillStyle=scanP;tctx.fillRect(0,0,w,h);}
-function tvBurst(frames,gap){if(RM||root.classList.contains('intro-on')||tvBusy)return;const now=performance.now();if(now-tvLast<(gap==null?900:gap))return;
+function tvBurst(frames,gap){if(RM||root.classList.contains('intro-on')||root.classList.contains('title-lock')||tvBusy)return false;const now=performance.now();if(now-tvLast<(gap==null?900:gap))return false;
   tvBusy=true;tvLast=now;const vh=innerHeight;const secs=$$('#story > section').filter(s2=>{const r=s2.getBoundingClientRect();return r.bottom>0&&r.top<vh;});
   tv.classList.add('on');const big=frames>=5;let f=0,hold=Math.random()*.6;
   (function step(){if(f>=frames){tctx.clearRect(0,0,tv.width,tv.height);tv.classList.remove('on');secs.forEach(s2=>{s2.style.filter='';s2.style.transform='';});tvBusy=false;return;}
